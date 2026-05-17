@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>易卦占卜 · 探寻人生道路的智慧</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- 星空/水墨背景容器 -->
+    <div class="background"></div>
+    
+    <div class="container">
+        <!-- 页眉 -->
+        <header class="header">
+            <h1 class="title">易卦占卜</h1>
+            <p class="subtitle">以八卦五行之理，探寻人生之路</p>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="main-content">
+            <!-- 左侧：输入区域 -->
+            <section class="input-section">
+                <div class="input-container">
+                    <label for="question" class="input-label">请问你想知道什么？</label>
+                    <textarea 
+                        id="question" 
+                        class="question-input"
+                        placeholder="例如：我最近的事业运如何？"
+                        rows="4"
+                        maxlength="200"
+                    ></textarea>
+                    <div class="char-count">
+                        <span id="char-count">0</span>/200
+                    </div>
+                    <button class="divination-btn" id="divination-btn">开始占卜</button>
+                </div>
+            </section>
+
+            <!-- 中心：太极八卦布局 -->
+            <section class="divination-section">
+                <!-- 中心太极圆 -->
+                <div class="taiji-container">
+                    <svg class="taiji-circle" viewBox="0 0 200 200" width="200" height="200">
+                        <!-- 黑色半圆 -->
+                        <circle cx="100" cy="100" r="100" fill="#1a1a1a"/>
+                        <!-- 白色半圆 -->
+                        <path d="M 100 0 A 100 100 0 0 1 100 200 A 50 50 0 0 1 100 100 A 50 50 0 0 0 100 0" fill="#f5f5f5"/>
+                        <!-- 黑色小圆 -->
+                        <circle cx="100" cy="50" r="8" fill="#1a1a1a"/>
+                        <!-- 白色小圆 -->
+                        <circle cx="100" cy="150" r="8" fill="#f5f5f5"/>
+                    </svg>
+                    <div class="taiji-label">八卦占卜</div>
+                </div>
+
+                <!-- 5卦布局区域（按五行方位） -->
+                <div class="bagua-grid">
+                    <!-- 东方-木 -->
+                    <div class="card-slot east" data-position="east" data-wuxing="木">
+                        <div class="card-wrapper">
+                            <div class="card card-back">
+                                <div class="card-symbol">☰</div>
+                            </div>
+                        </div>
+                        <div class="position-label">东<br/>木</div>
+                    </div>
+
+                    <!-- 南方-火 -->
+                    <div class="card-slot south" data-position="south" data-wuxing="火">
+                        <div class="card-wrapper">
+                            <div class="card card-back">
+                                <div class="card-symbol">☲</div>
+                            </div>
+                        </div>
+                        <div class="position-label">南<br/>火</div>
+                    </div>
+
+                    <!-- 西方-金 -->
+                    <div class="card-slot west" data-position="west" data-wuxing="金">
+                        <div class="card-wrapper">
+                            <div class="card card-back">
+                                <div class="card-symbol">☱</div>
+                            </div>
+                        </div>
+                        <div class="position-label">西<br/>金</div>
+                    </div>
+
+                    <!-- 北方-水 -->
+                    <div class="card-slot north" data-position="north" data-wuxing="水">
+                        <div class="card-wrapper">
+                            <div class="card card-back">
+                                <div class="card-symbol">☵</div>
+                            </div>
+                        </div>
+                        <div class="position-label">北<br/>水</div>
+                    </div>
+
+                    <!-- 中央-土 -->
+                    <div class="card-slot center" data-position="center" data-wuxing="土">
+                        <div class="card-wrapper">
+                            <div class="card card-back">
+                                <div class="card-symbol">☷</div>
+                            </div>
+                        </div>
+                        <div class="position-label">中<br/>土</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 右侧：结果展示区域 -->
+            <section class="result-section">
+                <div class="result-container">
+                    <h2 class="result-title">占卜解读</h2>
+                    <div class="result-content" id="result-content">
+                        <p class="placeholder">点击"开始占卜"，了解你的运势</p>
+                    </div>
+                    <button class="reset-btn" id="reset-btn" style="display: none;">重新占卜</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>易经八卦自古以来被用于占卜和人生指引。本应用仅供娱乐和参考，不代表任何确定的预测。</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript 脚本 -->
+    <script src="js/bagua.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

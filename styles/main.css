@@ -1,0 +1,725 @@
+/**
+ * 易卦占卜网站 - 主样式表
+ * 设计理念：水墨传统风格 + 现代交互
+ */
+
+:root {
+    /* 颜色主题 */
+    --primary-gold: #d4af37;
+    --primary-black: #1a1a1a;
+    --primary-gray: #3a3a3a;
+    --light-bg: #f5f5f0;
+    --dark-bg: #2a2a28;
+    
+    /* 五行颜色 */
+    --wuxing-wood: #2ecc71;    /* 绿色 */
+    --wuxing-fire: #e74c3c;    /* 红色 */
+    --wuxing-earth: #f39c12;   /* 黄色 */
+    --wuxing-metal: #bdc3c7;   /* 白/银 */
+    --wuxing-water: #3498db;   /* 蓝色 */
+    
+    /* 字体 */
+    --font-serif: 'Georgia', '微软雅黑', serif;
+    --font-sans: 'Segoe UI', '微软雅黑', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+/* ============== 背景设计 ============== */
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+    /* 水墨山水背景：浅色渐变 */
+    background: linear-gradient(135deg, #f5f5f0 0%, #e8e8e0 50%, #dcdcd4 100%);
+    
+    /* 可选：添加纹理效果 */
+    background-image: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(200, 200, 200, 0.03) 2px,
+            rgba(200, 200, 200, 0.03) 4px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(200, 200, 200, 0.03) 2px,
+            rgba(200, 200, 200, 0.03) 4px
+        );
+}
+
+/* ============== 容器与布局 ============== */
+
+body {
+    font-family: var(--font-sans);
+    color: var(--primary-black);
+    background-color: transparent;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ============== 页眉 ============== */
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+    font-family: var(--font-serif);
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 3px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--primary-gray);
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+/* ============== 主内容区域 ============== */
+
+.main-content {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 40px;
+    margin-bottom: 30px;
+    align-items: start;
+}
+
+/* ============== 输入区域 ============== */
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-container {
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid var(--primary-gold);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    animation: fadeInLeft 0.8s ease-out 0.2s both;
+}
+
+.input-label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-gold);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.question-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    border: 1px solid var(--primary-gray);
+    border-radius: 8px;
+    resize: vertical;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--primary-black);
+    transition: all 0.3s ease;
+    min-height: 120px;
+}
+
+.question-input:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    background-color: #fff;
+}
+
+.char-count {
+    font-size: 0.85rem;
+    color: var(--primary-gray);
+    text-align: right;
+    margin-top: 8px;
+}
+
+.divination-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    background: linear-gradient(135deg, var(--primary-gold), #c49a28);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.divination-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+    background: linear-gradient(135deg, #e6c652, #d4af37);
+}
+
+.divination-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.divination-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ============== 占卜区域（太极八卦） ============== */
+
+.divination-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+/* 中心太极圆 */
+.taiji-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    animation: fadeIn 0.8s ease-out 0.4s both;
+}
+
+.taiji-circle {
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.taiji-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* 八卦网格布局 */
+.bagua-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 30px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.5s both;
+}
+
+.card-slot.east {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.card-slot.south {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.card-slot.west {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.card-slot.north {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.card-slot.center {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/* 卡片样式 */
+.card-wrapper {
+    perspective: 1000px;
+    width: 100px;
+    height: 140px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 2px solid var(--primary-gold);
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-back {
+    background: linear-gradient(135deg, var(--primary-gold), #c49a28);
+    color: white;
+}
+
+.card-front {
+    background: white;
+    color: var(--primary-black);
+    border-color: var(--primary-gray);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+}
+
+.card.rotating {
+    animation: cardRotate 0.6s ease-out;
+}
+
+@keyframes cardRotate {
+    0% {
+        transform: rotateZ(0deg) scale(1);
+    }
+    50% {
+        transform: rotateZ(180deg) scale(1.05);
+    }
+    100% {
+        transform: rotateZ(360deg) scale(1);
+    }
+}
+
+.card-symbol {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.card-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.card-wuxing {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    text-align: center;
+}
+
+.position-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-gray);
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* 卡片悬停效果 */
+.card-slot:hover .card-back {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* ============== 结果展示区域 ============== */
+
+.result-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeInRight 0.8s ease-out 0.2s both;
+}
+
+.result-container {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--primary-gold);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.result-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid var(--primary-gold);
+    padding-bottom: 15px;
+}
+
+.result-content {
+    flex: 1;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--primary-black);
+    overflow-y: auto;
+    max-height: 500px;
+    word-wrap: break-word;
+}
+
+.result-content p {
+    margin-bottom: 15px;
+}
+
+.placeholder {
+    color: var(--primary-gray);
+    text-align: center;
+    font-style: italic;
+}
+
+.reset-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    background: linear-gradient(135deg, var(--primary-gray), #2a2a2a);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.reset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ============== 页脚 ============== */
+
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    color: var(--primary-gray);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--primary-gold);
+    margin-top: 40px;
+}
+
+/* ============== 动画关键帧 ============== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============== 响应式设计 ============== */
+
+/* 平板尺寸（768px 及以上） */
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .bagua-grid {
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        gap: 20px;
+    }
+    
+    .card-wrapper {
+        width: 80px;
+        height: 110px;
+    }
+    
+    .card {
+        font-size: 1.5rem;
+    }
+    
+    .card-symbol {
+        font-size: 1.4rem;
+    }
+}
+
+/* 手机尺寸（375px 及以上） */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .header {
+        margin-bottom: 30px;
+    }
+    
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .input-container {
+        padding: 20px;
+    }
+    
+    .question-input {
+        min-height: 100px;
+        font-size: 16px; /* 防止 iOS 自动缩放 */
+    }
+    
+    .taiji-circle {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .bagua-grid {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+        gap: 15px;
+    }
+    
+    .card-wrapper {
+        width: 70px;
+        height: 100px;
+    }
+    
+    .card {
+        font-size: 1.2rem;
+        border-radius: 6px;
+    }
+    
+    .card-symbol {
+        font-size: 1.2rem;
+    }
+    
+    .card-name {
+        font-size: 0.75rem;
+    }
+    
+    .card-wuxing {
+        font-size: 0.65rem;
+    }
+    
+    .position-label {
+        font-size: 0.7rem;
+    }
+    
+    .result-container {
+        min-height: 300px;
+        padding: 20px;
+    }
+    
+    .result-content {
+        max-height: 400px;
+        font-size: 0.9rem;
+    }
+    
+    .divination-btn,
+    .reset-btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+
+/* 超小屏幕（375px 以下） */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px 10px;
+    }
+    
+    .title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .header {
+        margin-bottom: 20px;
+    }
+    
+    .input-container,
+    .result-container {
+        padding: 15px;
+        border-radius: 8px;
+    }
+    
+    .input-label,
+    .result-title {
+        font-size: 1rem;
+    }
+    
+    .question-input {
+        min-height: 80px;
+        font-size: 16px;
+    }
+    
+    .taiji-circle {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .taiji-label {
+        font-size: 1rem;
+    }
+    
+    .bagua-grid {
+        grid-template-columns: repeat(3, 70px);
+        grid-template-rows: repeat(3, 70px);
+        gap: 10px;
+    }
+    
+    .card-wrapper {
+        width: 60px;
+        height: 85px;
+    }
+    
+    .card {
+        font-size: 1rem;
+    }
+    
+    .card-symbol {
+        font-size: 1rem;
+    }
+    
+    .footer {
+        font-size: 0.8rem;
+        padding: 20px 0;
+    }
+}
+
+/* ============== 实用工具类 ============== */
+
+.hidden {
+    display: none !important;
+}
+
+.rotating {
+    animation: cardRotate 0.6s ease-out;
+}
+
+/* 滚动条美化 */
+.result-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.result-content::-webkit-scrollbar-track {
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 10px;
+}
+
+.result-content::-webkit-scrollbar-thumb {
+    background: var(--primary-gold);
+    border-radius: 10px;
+}
+
+.result-content::-webkit-scrollbar-thumb:hover {
+    background: #c49a28;
+}
